@@ -1,0 +1,7 @@
+﻿  main.cpp
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(7): warning C4326: return type of 'main' should be 'int' instead of 'void'
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(21): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  All 100 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Backend Hiring Task.vcxproj -> C:\Users\lenovo\Documents\GitHub\Backend-Engineer-Hiring-Task\Release\Backend Hiring Task.exe
