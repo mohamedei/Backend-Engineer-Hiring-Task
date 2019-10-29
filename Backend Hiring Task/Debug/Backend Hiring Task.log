@@ -1,4 +1,7 @@
 ﻿  main.cpp
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(7): warning C4326: return type of 'main' should be 'int' instead of 'void'
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(21): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(45): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(47): warning C4326: return type of 'main' should be 'int' instead of 'void'
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(53): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(84): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(132): warning C4715: 'ME_Encrypt': not all control paths return a value
   Backend Hiring Task.vcxproj -> C:\Users\lenovo\Documents\GitHub\Backend-Engineer-Hiring-Task\Debug\Backend Hiring Task.exe
