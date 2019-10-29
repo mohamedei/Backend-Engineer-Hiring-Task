@@ -1,9 +1,17 @@
 #include<iostream>
 #include<string>
+#include"include/curl/curl.h"
+#include"include/json/json.h"
+#pragma comment(lib, "lib/libcurl.a")
+#pragma comment(lib, "lib/libcurl.dll.a")
 using namespace std;
 
 void TestProgram();
 bool SE_Encrypt(string& s);
+bool SE_Decrypt(string& s);
+void RE_Encrypt(string& s);
+void RE_Decrypt(string& s);
+std::size_t callback(const char* in, std::size_t size, std::size_t num, std::string* out);
 
 float MatrixEncrypt[16][16] = {
 {8.000, 4.000, 4.000, 8.000, 7.000, 8.000, 7.000, 1.000, 9.000, 4.000, 1.000, 1.000, 1.000, 6.000, 3.000, 0.000},
@@ -42,6 +50,13 @@ float MatrixDecrypt[16][16] = {
 };
 
 void main() {
+
+	string s = "Hello World";
+	RE_Encrypt(s);
+	cout << s << endl;
+	RE_Decrypt(s);
+	cout << s << endl;
+	system("pause");
 	return;
 }
 bool SE_Encrypt(string& s)									//Returns success boolean
@@ -122,4 +137,102 @@ void TestProgram()
 	system("pause");
 }
 
+void RE_Encrypt(string& s)
+{
+	CURL *curl;
+	CURLcode res;
+	Json::Value jsonData;
+	Json::Reader jsonReader;
+	curl_global_init(CURL_GLOBAL_ALL);
+	string POST_RES;
+	std::unique_ptr<std::string> httpData(new std::string());
+	curl = curl_easy_init();
+	if (curl) {
+		
+		string body = "{\"string\" : \""+s+"\"}";
+		struct curl_slist *hs = NULL;
+		hs = curl_slist_append(hs, "Content-Type: application/json");
 
+		curl_easy_setopt(curl, CURLOPT_URL, "http://backendtask.robustastudio.com/encode");
+		/* Now specify the POST data */
+		curl_easy_setopt(curl, CURLOPT_HTTPHEADER, hs);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, callback);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, httpData.get());
+		curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
+		
+		/* Perform the request, res will get the return code */
+		res = curl_easy_perform(curl);
+		
+		/* Check for errors */
+		if (res != CURLE_OK)
+			cout << "curl_easy_perform() failed\n";
+
+		/* always cleanup */
+		curl_easy_cleanup(curl);
+	}
+	if (jsonReader.parse(*httpData.get(), jsonData))
+	{
+		//std::cout << "Successfully parsed JSON data" << std::endl;
+		s= (jsonData["string"].asString());
+	}
+	else
+	{
+		std::cout << "Could not parse HTTP data as JSON" << std::endl;
+		std::cout << "HTTP data was:\n" << *httpData.get() << std::endl;
+		return ;
+	}
+}
+
+void RE_Decrypt(string& s)
+{
+	CURL *curl;
+	CURLcode res;
+	Json::Value jsonData;
+	Json::Reader jsonReader;
+	curl_global_init(CURL_GLOBAL_ALL);
+	string POST_RES;
+	std::unique_ptr<std::string> httpData(new std::string());
+	curl = curl_easy_init();
+	if (curl) {
+
+		string body = "{\"string\" : \"" + s + "\"}";
+		struct curl_slist *hs = NULL;
+		hs = curl_slist_append(hs, "Content-Type: application/json");
+
+		curl_easy_setopt(curl, CURLOPT_URL, "http://backendtask.robustastudio.com/decode");
+		/* Now specify the POST data */
+		curl_easy_setopt(curl, CURLOPT_HTTPHEADER, hs);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, callback);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, httpData.get());
+		curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
+
+		/* Perform the request, res will get the return code */
+		res = curl_easy_perform(curl);
+
+		/* Check for errors */
+		if (res != CURLE_OK)
+			cout << "curl_easy_perform() failed\n";
+
+		/* always cleanup */
+		curl_easy_cleanup(curl);
+	}
+	if (jsonReader.parse(*httpData.get(), jsonData))
+	{
+		//std::cout << "Successfully parsed JSON data" << std::endl;
+		s = (jsonData["string"].asString());
+	}
+	else
+	{
+		std::cout << "Could not parse HTTP data as JSON" << std::endl;
+		std::cout << "HTTP data was:\n" << *httpData.get() << std::endl;
+		return;
+	}
+}
+
+
+std::size_t callback(const char* in, std::size_t size, std::size_t num, std::string* out)
+{
+	const std::size_t totalBytes(size * num);
+	out->append(in, totalBytes);
+	return totalBytes;
+}
