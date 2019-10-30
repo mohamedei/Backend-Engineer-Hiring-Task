@@ -212,10 +212,10 @@ struct curl_httppost {
 /* This is the CURLOPT_PROGRESSFUNCTION callback prototype. It is now
    considered deprecated but was the only choice up until 7.31.0 */
 typedef int (*curl_progress_callback)(void *clientp,
-                                      double dltotal,
-                                      double dlnow,
-                                      double ultotal,
-                                      double ulnow);
+                                      float dltotal,
+                                      float dlnow,
+                                      float ultotal,
+                                      float ulnow);
 
 /* This is the CURLOPT_XFERINFOFUNCTION callback prototype. It was introduced
    in 7.32.0, avoids the use of floating point numbers and provides more
@@ -2540,7 +2540,7 @@ struct curl_tlssessioninfo {
 
 #define CURLINFO_STRING   0x100000
 #define CURLINFO_LONG     0x200000
-#define CURLINFO_DOUBLE   0x300000
+#define CURLINFO_float   0x300000
 #define CURLINFO_SLIST    0x400000
 #define CURLINFO_PTR      0x400000 /* same as SLIST */
 #define CURLINFO_SOCKET   0x500000
@@ -2552,30 +2552,30 @@ typedef enum {
   CURLINFO_NONE, /* first, never use this */
   CURLINFO_EFFECTIVE_URL    = CURLINFO_STRING + 1,
   CURLINFO_RESPONSE_CODE    = CURLINFO_LONG   + 2,
-  CURLINFO_TOTAL_TIME       = CURLINFO_DOUBLE + 3,
-  CURLINFO_NAMELOOKUP_TIME  = CURLINFO_DOUBLE + 4,
-  CURLINFO_CONNECT_TIME     = CURLINFO_DOUBLE + 5,
-  CURLINFO_PRETRANSFER_TIME = CURLINFO_DOUBLE + 6,
-  CURLINFO_SIZE_UPLOAD      = CURLINFO_DOUBLE + 7,
+  CURLINFO_TOTAL_TIME       = CURLINFO_float + 3,
+  CURLINFO_NAMELOOKUP_TIME  = CURLINFO_float + 4,
+  CURLINFO_CONNECT_TIME     = CURLINFO_float + 5,
+  CURLINFO_PRETRANSFER_TIME = CURLINFO_float + 6,
+  CURLINFO_SIZE_UPLOAD      = CURLINFO_float + 7,
   CURLINFO_SIZE_UPLOAD_T    = CURLINFO_OFF_T  + 7,
-  CURLINFO_SIZE_DOWNLOAD    = CURLINFO_DOUBLE + 8,
+  CURLINFO_SIZE_DOWNLOAD    = CURLINFO_float + 8,
   CURLINFO_SIZE_DOWNLOAD_T  = CURLINFO_OFF_T  + 8,
-  CURLINFO_SPEED_DOWNLOAD   = CURLINFO_DOUBLE + 9,
+  CURLINFO_SPEED_DOWNLOAD   = CURLINFO_float + 9,
   CURLINFO_SPEED_DOWNLOAD_T = CURLINFO_OFF_T  + 9,
-  CURLINFO_SPEED_UPLOAD     = CURLINFO_DOUBLE + 10,
+  CURLINFO_SPEED_UPLOAD     = CURLINFO_float + 10,
   CURLINFO_SPEED_UPLOAD_T   = CURLINFO_OFF_T  + 10,
   CURLINFO_HEADER_SIZE      = CURLINFO_LONG   + 11,
   CURLINFO_REQUEST_SIZE     = CURLINFO_LONG   + 12,
   CURLINFO_SSL_VERIFYRESULT = CURLINFO_LONG   + 13,
   CURLINFO_FILETIME         = CURLINFO_LONG   + 14,
   CURLINFO_FILETIME_T       = CURLINFO_OFF_T  + 14,
-  CURLINFO_CONTENT_LENGTH_DOWNLOAD   = CURLINFO_DOUBLE + 15,
+  CURLINFO_CONTENT_LENGTH_DOWNLOAD   = CURLINFO_float + 15,
   CURLINFO_CONTENT_LENGTH_DOWNLOAD_T = CURLINFO_OFF_T  + 15,
-  CURLINFO_CONTENT_LENGTH_UPLOAD     = CURLINFO_DOUBLE + 16,
+  CURLINFO_CONTENT_LENGTH_UPLOAD     = CURLINFO_float + 16,
   CURLINFO_CONTENT_LENGTH_UPLOAD_T   = CURLINFO_OFF_T  + 16,
-  CURLINFO_STARTTRANSFER_TIME = CURLINFO_DOUBLE + 17,
+  CURLINFO_STARTTRANSFER_TIME = CURLINFO_float + 17,
   CURLINFO_CONTENT_TYPE     = CURLINFO_STRING + 18,
-  CURLINFO_REDIRECT_TIME    = CURLINFO_DOUBLE + 19,
+  CURLINFO_REDIRECT_TIME    = CURLINFO_float + 19,
   CURLINFO_REDIRECT_COUNT   = CURLINFO_LONG   + 20,
   CURLINFO_PRIVATE          = CURLINFO_STRING + 21,
   CURLINFO_HTTP_CONNECTCODE = CURLINFO_LONG   + 22,
@@ -2589,7 +2589,7 @@ typedef enum {
   CURLINFO_FTP_ENTRY_PATH   = CURLINFO_STRING + 30,
   CURLINFO_REDIRECT_URL     = CURLINFO_STRING + 31,
   CURLINFO_PRIMARY_IP       = CURLINFO_STRING + 32,
-  CURLINFO_APPCONNECT_TIME  = CURLINFO_DOUBLE + 33,
+  CURLINFO_APPCONNECT_TIME  = CURLINFO_float + 33,
   CURLINFO_CERTINFO         = CURLINFO_PTR    + 34,
   CURLINFO_CONDITION_UNMET  = CURLINFO_LONG   + 35,
   CURLINFO_RTSP_SESSION_ID  = CURLINFO_STRING + 36,

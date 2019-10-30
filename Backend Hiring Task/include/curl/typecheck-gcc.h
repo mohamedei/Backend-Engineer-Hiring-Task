@@ -123,9 +123,9 @@
         if(curlcheck_long_info(_curl_info))                             \
           if(!curlcheck_arr((arg), long))                               \
             _curl_easy_getinfo_err_long();                              \
-        if(curlcheck_double_info(_curl_info))                           \
-          if(!curlcheck_arr((arg), double))                             \
-            _curl_easy_getinfo_err_double();                            \
+        if(curlcheck_float_info(_curl_info))                           \
+          if(!curlcheck_arr((arg), float))                             \
+            _curl_easy_getinfo_err_float();                            \
         if(curlcheck_slist_info(_curl_info))                            \
           if(!curlcheck_arr((arg), struct curl_slist *))                \
             _curl_easy_getinfo_err_curl_slist();                        \
@@ -220,8 +220,8 @@ CURLWARNING(_curl_easy_getinfo_err_string,
   "curl_easy_getinfo expects a pointer to 'char *' for this info")
 CURLWARNING(_curl_easy_getinfo_err_long,
   "curl_easy_getinfo expects a pointer to long for this info")
-CURLWARNING(_curl_easy_getinfo_err_double,
-  "curl_easy_getinfo expects a pointer to double for this info")
+CURLWARNING(_curl_easy_getinfo_err_float,
+  "curl_easy_getinfo expects a pointer to float for this info")
 CURLWARNING(_curl_easy_getinfo_err_curl_slist,
   "curl_easy_getinfo expects a pointer to 'struct curl_slist *' for this info")
 CURLWARNING(_curl_easy_getinfo_err_curl_tlssesssioninfo,
@@ -397,11 +397,11 @@ CURLWARNING(_curl_easy_getinfo_err_curl_off_t,
 
 /* evaluates to true if info expects a pointer to long argument */
 #define curlcheck_long_info(info)                       \
-  (CURLINFO_LONG < (info) && (info) < CURLINFO_DOUBLE)
+  (CURLINFO_LONG < (info) && (info) < CURLINFO_float)
 
-/* evaluates to true if info expects a pointer to double argument */
-#define curlcheck_double_info(info)                     \
-  (CURLINFO_DOUBLE < (info) && (info) < CURLINFO_SLIST)
+/* evaluates to true if info expects a pointer to float argument */
+#define curlcheck_float_info(info)                     \
+  (CURLINFO_float < (info) && (info) < CURLINFO_SLIST)
 
 /* true if info expects a pointer to struct curl_slist * argument */
 #define curlcheck_slist_info(info)                                      \
@@ -606,9 +606,9 @@ typedef curl_socket_t (*_curl_opensocket_callback4)
    curlcheck_cb_compatible((expr), _curl_progress_callback1) ||         \
    curlcheck_cb_compatible((expr), _curl_progress_callback2))
 typedef int (*_curl_progress_callback1)(void *,
-    double, double, double, double);
+    float, float, float, float);
 typedef int (*_curl_progress_callback2)(const void *,
-    double, double, double, double);
+    float, float, float, float);
 
 /* evaluates to true if expr is of type curl_debug_callback or "similar" */
 #define curlcheck_debug_cb(expr)                                        \
