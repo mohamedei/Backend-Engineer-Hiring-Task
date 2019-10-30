@@ -1,9 +1,14 @@
+#define CATCH_CONFIG_RUNNER
 #include<iostream>
 #include<string>
 #include"include/curl/curl.h"
 #include"include/json/json.h"
+#include"catch.hpp"
 #pragma comment(lib, "lib/libcurl.a")
 #pragma comment(lib, "lib/libcurl.dll.a")
+
+
+
 using namespace std;
 
 void TestSE_Encrypt();
@@ -54,12 +59,12 @@ double MatrixDecrypt[16][16] = {
 {0.051245491573803, 0.047735585799314, 0.019889459157673, - 0.055381465402088, 0.171358401700705, 0.049314885561074, - 0.021834316287122, 0.033901985721205, 0.121062561797019, 0.095099592970483, 0.052994957136868, - 0.246427467822199, - 0.029773768604971, - 0.153276054566094, - 0.084954401825375, 0.052024137604019},
 {- 0.153612088210597, - 0.058212221217499, 0.096467473348521, 0.129389831134947, - 0.166369564539914, - 0.163654572235491, - 0.019395649590667, - 0.140682220131554, - 0.071530405390647, - 0.016836777394500, - 0.063409311447827, 0.372333201408698, - 0.061510980613705, 0.172726336659603, 0.223722169457708, - 0.120402896064248}
 };
+int main(int argc, char* const argv[]) {
+	int result = Catch::Session().run(argc, argv);
 
-void main() {
-	
-	TestME_Encrypt();
+	system("pause");
+	return result;
 }
-
 bool SE_Encrypt(string& s)									//Returns success boolean
 {
 	string temp = s;
@@ -317,6 +322,7 @@ void ME_Encrypt(string s, double **Result)
 		delete[] doubleMatrix[i];
 	}
 	delete[] doubleMatrix;
+	return;
 }
 
 
@@ -337,4 +343,35 @@ void ME_Decrypt(double **Input, string &result, int length)
 		delete[] doubleMatrix[i];
 	}
 	delete[] doubleMatrix;
+}
+TEST_CASE("SE_Encrypt", "[SE_Encrypt]") {
+	string s = "H";
+	REQUIRE(SE_Encrypt(s)==true);
+	REQUIRE(s == "K");
+	 s = "h";
+	REQUIRE(SE_Encrypt(s) == true);
+	REQUIRE(s == "k");
+	 s = "Z";
+	REQUIRE(SE_Encrypt(s) == true);
+	REQUIRE(s == "C");
+	 s = "z";
+	REQUIRE(SE_Encrypt(s) == true);
+	REQUIRE(s == "c");
+	 s = " ";
+	REQUIRE(SE_Encrypt(s) == true);
+	REQUIRE(s == " ");
+	 s = "@";
+	REQUIRE(SE_Encrypt(s) == false);
+	REQUIRE(s == "@");
+	
+}
+TEST_CASE("ME_Encrypt", "[ME_Encrypt]") {
+	string s = "Hello World";
+	string r = "";
+	double** doubleResult = new double*[s.length()];
+	for (int i = 0; i < s.length(); i++)
+		doubleResult[i] = new double[16];
+	ME_Encrypt(s, doubleResult);
+	ME_Decrypt(doubleResult, r, s.length());
+	REQUIRE(s == r);
 }

@@ -1,9 +1,15 @@
 ﻿  main.cpp
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(8): warning C4326: return type of 'main' should be 'int' instead of 'void'
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(22): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(67): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(98): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(148): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(155): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(311): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(313): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(315): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(317): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  0 of 100 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  20 of 6951 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Backend Hiring Task.vcxproj -> C:\Users\lenovo\Documents\GitHub\Backend-Engineer-Hiring-Task\Release\Backend Hiring Task.exe
