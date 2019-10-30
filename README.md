@@ -1,9 +1,9 @@
 ## General info
-This project is a command line program that takes a string and encrypts it using three encryption algorithms:
-*Shift Encryption
-*Matrix Encryption
-*Reverse Encryption
-The program takes a string and can encrypt it or decrypt it using any of these algorithms with the exception of Matrix Decoding as that requires a Matrix input. You can however test the Matrix Decryption on a string encrypted by the program.
+This project is a command line program that takes a string and encrypts it using three encryption algorithms:  
+*Shift Encryption  
+*Matrix Encryption  
+*Reverse Encryption  
+The program takes a string and can encrypt it or decrypt it using any of these algorithms with the exception of Matrix Decoding as that requires a Matrix input. You can however test the Matrix Decryption on a string encrypted by the program.  
 	
 ## Dependencies
 Project is created with:
