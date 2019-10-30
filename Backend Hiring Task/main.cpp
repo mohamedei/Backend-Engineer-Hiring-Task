@@ -59,12 +59,122 @@ double MatrixDecrypt[16][16] = {
 {0.051245491573803, 0.047735585799314, 0.019889459157673, - 0.055381465402088, 0.171358401700705, 0.049314885561074, - 0.021834316287122, 0.033901985721205, 0.121062561797019, 0.095099592970483, 0.052994957136868, - 0.246427467822199, - 0.029773768604971, - 0.153276054566094, - 0.084954401825375, 0.052024137604019},
 {- 0.153612088210597, - 0.058212221217499, 0.096467473348521, 0.129389831134947, - 0.166369564539914, - 0.163654572235491, - 0.019395649590667, - 0.140682220131554, - 0.071530405390647, - 0.016836777394500, - 0.063409311447827, 0.372333201408698, - 0.061510980613705, 0.172726336659603, 0.223722169457708, - 0.120402896064248}
 };
-int main(int argc, char* const argv[]) {
-	int result = Catch::Session().run(argc, argv);
+int main(int argc, char* argv[]) {
+	if (argc != 4 )
+	{
+		cout << "Incorrect number of arguments: Please type \"Backend Hiring Task\" <string> <S/M/R> <enc/dec>\n";
+	}
+	else
+	if ((string)argv[2] == "S")
+	{
+		if ((string)argv[3] == "enc")
+		{
+			string s = argv[1];
+			if (SE_Encrypt(s))
+			{
+				cout << "The encrypted string is " << s << endl;
+			}
+			else
+			{
+				cout << "Encryption Failed: Make sure your string does not contain special characters\n";
+			}
+		}
+		else
+			if ((string)argv[3] == "dec")
+			{
+				string s = argv[1];
+				if (SE_Decrypt(s))
+				{
+					cout << "The decrypted string is " << s << endl;
+				}
+				else
+				{
+					cout << "Decryption Failed: Make sure your string does not contain special characters\n";
+				}
+			}
+			else
+			{
+				cout << "Incorrect third argument: Please type <enc/dec>\n";
+			}
+		}
+	else
+		if (((string)argv[2] == "M"))
+		{
+			if ((string)argv[3] == "enc")
+			{
+				string s=argv[1];
+				int length = s.length();
+				double** doubleResult = new double*[s.length()];
+				for (int i = 0; i < s.length(); i++)
+					doubleResult[i] = new double[16];
+				ME_Encrypt(s, doubleResult);
+				cout << "The encrypted string has been transformed to the following Matrix: \n";
+				cout << "{";
+				for (int i = 0; i < s.length(); i++)
+				{
+					cout << "{";
+					for (int j = 0; j < 16; j++)
+					{
+						cout << doubleResult[i][j];
+						if (j != 15)
+							cout << ",";
+					}
+						cout << "}\n";
+					}
+				
+				cout << "}\n";
+				cout << "Would you like to decode this matrix (Yes:0, No:Anything else)?\n";
+				bool dec = false;
+				cin >> dec;
+				if (!dec)
+				{
+					s = "";
+					ME_Decrypt(doubleResult, s, length);
+					cout << "The decrypted string is " << s << endl;
+					for (int i = 0; i < length; i++) {
+						delete[] doubleResult[i];
+					}
+					delete[] doubleResult;
+				}
+			}
+			else
+				if ((string)argv[3] == "dec")
+				{
+					cout << "Decryption for Matrix Encryption requires a matrix entry which is not supported. You can decrypt a string encrypted by the program after using \"Backend Hiring Task\" <string> M enc\n";
+				}
+				else
+				{
+					cout << "Incorrect third argument: Please type <enc/dec>\n";
+				}
+		}
+		else
+			if (((string)(argv[2]) == "R"))
+			{
+				if ((string)argv[3] == "enc")
+				{
+					string s = argv[1];
+					RE_Encrypt(s);
+					cout << "The encrypted string is " << s << endl;
+					
+				}
+				else
+					if ((string)argv[3] == "dec")
+					{
+						string s = argv[1];
+						RE_Decrypt(s);
+						cout << "The decrypted string is " << s << endl;
+					}
+					else
+					{
+						cout << "Incorrect third argument: Please type <enc/dec>\n";
+					}
+			}
+			else
+			{
+				cout << "Incorrect Second Argument ("<<argv[2]<<") Please use <S/M/R>\n";
+			}
+	}
 
-	system("pause");
-	return result;
-}
 bool SE_Encrypt(string& s)									//Returns success boolean
 {
 	string temp = s;

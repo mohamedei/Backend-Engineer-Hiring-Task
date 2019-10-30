@@ -1,11 +1,13 @@
 ﻿  main.cpp
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(71): warning C4018: '<': signed/unsigned mismatch
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(102): warning C4018: '<': signed/unsigned mismatch
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(152): warning C4018: '<': signed/unsigned mismatch
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(159): warning C4018: '<': signed/unsigned mismatch
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(315): warning C4018: '<': signed/unsigned mismatch
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(317): warning C4018: '<': signed/unsigned mismatch
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(319): warning C4018: '<': signed/unsigned mismatch
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(321): warning C4018: '<': signed/unsigned mismatch
-c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(372): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(108): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(113): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(181): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(212): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(262): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(269): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(425): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(427): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(429): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(431): warning C4018: '<': signed/unsigned mismatch
+c:\users\lenovo\documents\github\backend-engineer-hiring-task\backend hiring task\main.cpp(482): warning C4018: '<': signed/unsigned mismatch
   Backend Hiring Task.vcxproj -> C:\Users\lenovo\Documents\GitHub\Backend-Engineer-Hiring-Task\Debug\Backend Hiring Task.exe
